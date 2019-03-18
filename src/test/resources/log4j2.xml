@@ -6,8 +6,15 @@
     </Properties>
 
     <Appenders>
-        <RollingFile name="FullLogFile" fileName="logs/full_log.log" append="true"
-                     filePattern="logs/$${date:yyyy-MM-dd}/full_log-%d{MM-dd-yyyy}-%i.log">
+        <File name="CurrentTest" fileName="logs/last_test_log.log" append="false">
+            <PatternLayout>
+                <Pattern>${LOG_PATTERN}</Pattern>
+            </PatternLayout>
+            <LevelRangeFilter minLevel="FATAL" maxLevel="TRACE" onMatch="ACCEPT" onMismatch="DENY"/>
+        </File>
+
+        <RollingFile name="FullLogFile" fileName="logs/log.log" append="true"
+                     filePattern="logs/$${date:yyyy-MM-dd}/log-%d{MM-dd-yyyy}-%i.log">
             <Policies>
                 <SizeBasedTriggeringPolicy size="30KB"/>
             </Policies>
@@ -34,6 +41,7 @@
 
         <Root level="all">
             <AppenderRef ref="FullLogFile"/>
+            <AppenderRef ref="CurrentTest"/>
             <AppenderRef ref="Console-info"/>
             <AppenderRef ref="Console-error"/>
         </Root>
