@@ -3,16 +3,14 @@ package jar.sob.workshop.base;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Parameters;
+import org.testng.annotations.*;
 
 
 public abstract class BaseTest {
   public WebDriver driver;
   private static final Logger log = LogManager.getLogger();
 
-  @BeforeClass(alwaysRun = true)
+  @BeforeMethod()
   @Parameters({"browser", "url"})
   public void setUp(String browser, String url) {
     DriverBase driverBase = new DriverBase(browser, url);
@@ -21,8 +19,9 @@ public abstract class BaseTest {
     log.info("OBIEKTY: " + driverBase.getDriver());
   }
 
-  @AfterClass(alwaysRun = true)
+  @AfterMethod()
   public void tearDown() {
+    driver.close();
     driver.quit();
   }
 }
