@@ -10,7 +10,6 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import java.util.concurrent.TimeUnit;
 
 public class DriverBase {
-
   public static ThreadLocal<WebDriver> drivers = new ThreadLocal<>();
   private WebDriver driver = null;
   private String browser = null;

@@ -5,23 +5,22 @@ import jar.sob.workshop.pages.MainPage;
 import org.testng.annotations.Test;
 
 public class VerifyTopMenu extends BaseTest {
-  private MainPage mainPage;
 
-  @Test(description = "test 1")
+  @Test()
   public void checkMenu() {
-    mainPage = new MainPage(driver);
-    mainPage.clickInMenuContainsText("WOMEN");
+    new MainPage(driver)
+        .clickInMenuContainsText("WOMEN");
   }
 
-  @Test(description = "test 2")
+  @Test()
   public void checkMenu2() {
-    mainPage = new MainPage(driver);
-    mainPage.clickInMenuContainsText("DRESSES");
+    new MainPage(driver)
+        .clickInMenuContainsText("DRESSES");
   }
 
-  @Test(description = "test 3")
+  @Test()
   public void checkMenu3() {
-    mainPage = new MainPage(driver);
-    mainPage.clickInMenuContainsText("T-SHIRTS");
+    new MainPage(driver)
+        .clickInMenuContainsText("T-SHIRTS");
   }
 }
