@@ -1,5 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suite SYSTEM "http://automationpractice.com/index.php">
-<suite name = "Suite">
-    <test name = ""
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="TestSuite" thread-count="3" parallel="methods">
+    <parameter name="url" value="http://automationpractice.com/index.php"/>
+    <test name="jarsobworkshop">
+        <parameter name="browser" value="firefox"/>
+        <classes>
+            <class name="jar.sob.workshop.automationPracticesuite.VerifyTopMenu">
+                <methods>
+                    <include name="checkMenu" />
+                    <include name="checkMenu2" />
+                    <include name="checkMenu3" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="jarsobworkshop - second">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="jar.sob.workshop.automationPracticesuite.VerifyTopMenu">
+                <methods>
+                    <include name="checkMenu" />
+                    <include name="checkMenu2" />
+                    <include name="checkMenu3" />
+                </methods>
+            </class>
+        </classes>
+    </test>
 </suite>

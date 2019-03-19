@@ -23,11 +23,19 @@
         <testng.version>6.14.3</testng.version>
         <webdrivermanager.version>3.3.0</webdrivermanager.version>
         <cucumber-junit.version>4.2.0</cucumber-junit.version>
+        <assertj.version>3.11.1</assertj.version>
     </properties>
 
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.testng/testng -->
         <!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <!-- use 2.9.1 for Java 7 projects -->
+            <version>${assertj.version}</version>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
