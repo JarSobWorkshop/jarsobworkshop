@@ -6,7 +6,6 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-
 public class ClickMethods {
   private static final Logger log = LogManager.getLogger();
 

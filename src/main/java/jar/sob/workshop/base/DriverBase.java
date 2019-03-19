@@ -9,13 +9,14 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 
 import java.util.concurrent.TimeUnit;
 
-public class BrowserBase {
-  public ThreadLocal<WebDriver> drivers = new ThreadLocal<WebDriver>();
+public class DriverBase {
+
+  public static ThreadLocal<WebDriver> drivers = new ThreadLocal<>();
   private WebDriver driver = null;
   private String browser = null;
   private String url = null;
 
-  public  BrowserBase(String browser, String url) {
+  public DriverBase(String browser, String url) {
     this.browser = browser;
     if (browser.equalsIgnoreCase("chrome")) {
       WebDriverManager.chromedriver().setup();
