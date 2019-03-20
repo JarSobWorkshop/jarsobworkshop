@@ -10,46 +10,47 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import java.util.concurrent.TimeUnit;
 
 public class DriverBase {
+
   public static ThreadLocal<WebDriver> drivers = new ThreadLocal<>();
-  private WebDriver driver = null;
   private String browser = null;
   private String url = null;
 
   public DriverBase(String browser, String url) {
-    this.browser = browser;
-    if (browser.equalsIgnoreCase("chrome")) {
-      WebDriverManager.chromedriver().setup();
-      this.driver = new ChromeDriver();
-      drivers.set(driver);
-    } else if (browser.equalsIgnoreCase("firefox")) {
-      WebDriverManager.firefoxdriver().setup();
-      this.driver = new FirefoxDriver();
-      drivers.set(driver);
-    } else if (browser.equalsIgnoreCase("iedriver")) {
-      WebDriverManager.iedriver().setup();
-      this.driver = new InternetExplorerDriver();
-      drivers.set(driver);
-    } else {
-      WebDriverManager.edgedriver().setup();
-      this.driver = new EdgeDriver();
-      drivers.set(driver);
+    switch (browser) {
+      case ("chrome"):
+        WebDriverManager.chromedriver().setup();
+        drivers.set(new ChromeDriver());
+        break;
+      case ("firefox"):
+        WebDriverManager.firefoxdriver().setup();
+        drivers.set(new FirefoxDriver());
+        break;
+      case ("iedriver"):
+        WebDriverManager.iedriver().setup();
+        drivers.set(new InternetExplorerDriver());
+        break;
+      case ("edge"):
+        WebDriverManager.edgedriver().setup();
+        drivers.set(new EdgeDriver());
+        break;
+      }
+      drivers.get().manage().window().maximize();
+      drivers.get().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+      drivers.get().get(url);
+
     }
-    this.driver.manage().window().maximize();
-    this.driver.manage().timeouts().implicitlyWait(60, TimeUnit.MILLISECONDS);
-    this.driver.get(url);
-  }
 
-  public String getBrowser() {
-    return this.browser;
-  }
+    public String getBrowser () {
+      return this.browser;
+    }
 
-  public WebDriver getDriver() {
-    return drivers.get();
-  }
+    public WebDriver getDriver () {
+      return this.drivers.get();
+    }
 
-  public String getUrl() {
-    return url;
-  }
+    public String getUrl () {
+      return this.url;
+    }
 
-}
+  }
 
