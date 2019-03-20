@@ -1,16 +1,21 @@
-package jar.sob.workshop.methods_support;
+package jar.sob.workshop.methodsSupport;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
-public class ClickMethods {
+public class ClickMethods extends BaseMethods {
   private static final Logger log = LogManager.getLogger();
+  protected static WebDriverWait wait;
 
-  public static void clickOnElement(WebElement element) {
+  public void clickOnElement(WebElement element) {
     log.info("Click in element \"" + element + "\"");
+    wait = new WebDriverWait(getDriver(), 10);
+    wait.until(ExpectedConditions.elementToBeClickable(element));
     element.click();
   }
 

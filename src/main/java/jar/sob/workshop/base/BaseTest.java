@@ -2,27 +2,23 @@ package jar.sob.workshop.base;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openqa.selenium.WebDriver;
-import org.testng.annotations.*;
-
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
 
 public abstract class BaseTest {
-  public WebDriver driver;
+  protected DriverBase driverBase;
   private static final Logger log = LogManager.getLogger();
 
   @BeforeMethod()
   @Parameters({"browser", "url"})
   public void setUp(String browser, String url) {
-    DriverBase driverBase = new DriverBase(browser, url);
-    driverBase.getBrowser();
-    driver = driverBase.getDriver();
-    log.info("OBIEKTY: " + driverBase.getDriver());
+    driverBase = new DriverBase(browser, url);
   }
 
   @AfterMethod()
   public void tearDown() {
-    driver.close();
-    driver.quit();
+    driverBase.getDriver().quit();
   }
 }
 

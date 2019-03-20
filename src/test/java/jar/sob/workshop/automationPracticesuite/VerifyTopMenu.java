@@ -6,21 +6,24 @@ import org.testng.annotations.Test;
 
 public class VerifyTopMenu extends BaseTest {
 
-  @Test()
+  @Test(description = "Test1")
   public void checkMenu() {
-    new MainPage(driver)
-        .clickInMenuContainsText("WOMEN");
+    new MainPage()
+        .clickInMenu("WOMEN")
+        .compareTitleInPage("Women - My Store");
   }
 
-  @Test()
+  @Test(description = "Test2")
   public void checkMenu2() {
-    new MainPage(driver)
-        .clickInMenuContainsText("DRESSES");
+    new MainPage()
+        .clickInMenu("DRESSES")
+        .compareTitleInPage("Dresses - My Store");
   }
 
-  @Test()
+  @Test(description = "Test3")
   public void checkMenu3() {
-    new MainPage(driver)
-        .clickInMenuContainsText("T-SHIRTS");
+    new MainPage()
+        .clickInMenu("T-SHIRTS")
+        .compareTitleInPage("T-shirts - My Store");
   }
 }

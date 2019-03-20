@@ -25,15 +25,19 @@
             <LevelRangeFilter minLevel="FATAL" maxLevel="TRACE" onMatch="ACCEPT" onMismatch="DENY"/>
         </RollingFile>
 
+        <Console name="Console-error" target="SYSTEM_ERR">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <LevelRangeFilter minLevel="ERROR" maxLevel="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
+        </Console>
+
         <Console name="Console-info" target="SYSTEM_OUT">
             <PatternLayout pattern="${LOG_PATTERN}"/>
             <LevelRangeFilter minLevel="INFO" maxLevel="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
         </Console>
 
-
-        <Console name="Console-error" target="SYSTEM_ERR">
+        <Console name="Console-debug" target="SYSTEM_OUT">
             <PatternLayout pattern="${LOG_PATTERN}"/>
-            <LevelRangeFilter minLevel="ERROR" maxLevel="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
+            <LevelRangeFilter minLevel="DEBUG" maxLevel="DEBUG" onMatch="ACCEPT" onMismatch="DENY"/>
         </Console>
     </Appenders>
 
