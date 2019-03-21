@@ -13,9 +13,8 @@ public class DriverBase {
 
   public static ThreadLocal<WebDriver> drivers = new ThreadLocal<>();
   private String browser = null;
-  private String url = null;
 
-  public DriverBase(String browser, String url) {
+  public DriverBase(String browser) {
     switch (browser) {
       case ("chrome"):
         WebDriverManager.chromedriver().setup();
@@ -36,7 +35,6 @@ public class DriverBase {
       }
       drivers.get().manage().window().maximize();
       drivers.get().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-      drivers.get().get(url);
 
     }
 
@@ -48,9 +46,6 @@ public class DriverBase {
       return this.drivers.get();
     }
 
-    public String getUrl () {
-      return this.url;
-    }
 
   }
 
