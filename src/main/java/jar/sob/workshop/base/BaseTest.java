@@ -1,5 +1,6 @@
 package jar.sob.workshop.base;
 
+import jar.sob.workshop.services.ConfigService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.annotations.AfterMethod;
@@ -11,9 +12,10 @@ public abstract class BaseTest {
   private static final Logger log = LogManager.getLogger();
 
   @BeforeMethod()
-  @Parameters({"browser", "url"})
-  public void setUp(String browser, String url) {
-    driverBase = new DriverBase(browser, url);
+  @Parameters({"browser"})
+  public void setUp(String browser) {
+    driverBase = new DriverBase(browser);
+    driverBase.getDriver().get(ConfigService.getConfigService().getStringProperty("AutomationPractice.url"));
   }
 
   @AfterMethod()

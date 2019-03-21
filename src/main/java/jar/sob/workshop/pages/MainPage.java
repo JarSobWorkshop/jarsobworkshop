@@ -16,6 +16,10 @@ public class MainPage extends BasePage {
     super();
   }
 
+  public MainPage openPage(){
+    getDriver();
+    return this;
+  }
   public MainPage clickInMenu(String textInMenu) {
     log.info(getDriver().getTitle());
     ClickMethods.clickInElementFromListContainsText(textInMenu, listTopMenu);
